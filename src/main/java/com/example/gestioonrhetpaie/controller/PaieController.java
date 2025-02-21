@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -20,13 +21,26 @@ public class PaieController {
                                        @RequestParam Double heuresTravaillees,
                                        @RequestParam Double tauxHoraire,
                                        @RequestParam Double prime,
-                                       @RequestParam Double deduction) {
-        return paieService.calculerPaie(employeeId, heuresTravaillees, tauxHoraire, prime, deduction);
+                                       @RequestParam Double deduction,
+                                       @RequestParam Double acompte,@RequestParam String email) {
+        return paieService.calculerPaie(employeeId, heuresTravaillees, tauxHoraire, prime, deduction,acompte,email);
     }
 
     @GetMapping("/historique/{employeeId}")
     @Operation(summary = "Historique")
     public List<BulletinDePaie> historiquePaie(@PathVariable Long employeeId) {
         return paieService.historiquePaie(employeeId);
+    }
+
+    // Endpoint pour récupérer tous les bulletins
+    @GetMapping("/all")
+    public List<BulletinDePaie> findAll() {
+        return paieService.findAll();
+    }
+
+    // Endpoint pour récupérer un bulletin par son id
+    @GetMapping("/{id}")
+    public Optional<BulletinDePaie> findById(@PathVariable Long id) {
+        return paieService.findById(id);
     }
 }

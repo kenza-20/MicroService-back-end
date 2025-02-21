@@ -18,6 +18,8 @@ public class BulletinDePaie {
     private Double salaireBrut;
     private Double salaireNet;
     private String pdfPath;
+    private Double acompte;
+
 
     public Long getId() {
         return id;
@@ -65,5 +67,13 @@ public class BulletinDePaie {
 
     public void setPdfPath(String pdfPath) {
         this.pdfPath = pdfPath;
+    }
+
+    public Double getAcompte() {
+        return acompte;
+    }
+
+    public void setAcompte(Double acompte) {
+        this.acompte = acompte;
     }
 }
