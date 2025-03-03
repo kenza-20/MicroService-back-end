@@ -48,7 +48,7 @@ pipeline {
 
         stage('Push Docker Image to Registry') {
             steps {
-                withDockerRegistry([credentialsId: 'amirbill', url: '']) {
+                withDockerRegistry([credentialsId: 'amirbill', url: 'https://github.com/kenza-20/Devops-projet.git']) {
                     sh "docker push ${IMAGE_NAME}"
                 }
             }
