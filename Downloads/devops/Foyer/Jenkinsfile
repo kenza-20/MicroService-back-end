@@ -1,0 +1,63 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = "amirbill/alpine:latest"
+    }
+
+    stages {
+        stage('Checkout Repo') {
+            steps {
+                script {
+                    checkout scm: [
+                        $class: 'GitSCM',
+                        branches: [[name: 'devops-amir']],
+                        userRemoteConfigs: [[
+                            url: 'https://github.com/kenza-20/Devops-projet.git',
+                            credentialsId: 'git-creaditial'
+                        ]]
+                    ]
+                }
+            }
+        }
+
+        stage('Install Maven') {
+            steps {
+                echo 'Installing Maven...'
+                sh 'mvn -v' // Check Maven version
+            }
+        }
+
+        stage('Compile and Build') {
+            steps {
+                sh 'mvn clean install -DskipTests=true' // Build project without running tests
+            }
+        }
+
+        stage('Unit Test') {
+            steps {
+                sh 'mvn test' // Run tests
+            }
+        }
+
+        stage('Docker Image Creation') {
+            steps {
+                sh "docker build -t ${DOCKER_IMAGE} ."
+            }
+        }
+
+        stage('Push Docker Image to Registry') {
+            steps {
+                withDockerRegistry([credentialsId: 'tokenff', url: 'https://github.com/kenza-20/Devops-projet.git']) {
+                    sh "docker push ${DOCKER_IMAGE}"
+                }
+            }
+        }
+
+        stage('Spring Profile Test') {
+            steps {
+                sh 'mvn test -Dspring.profiles.active=test' // Run tests with a specific Spring profile
+            }
+        }
+    }
+}
