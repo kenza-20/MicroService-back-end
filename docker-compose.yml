@@ -1,0 +1,103 @@
+services:
+  api-gateway:
+    image: api-gateway-image
+    container_name: api-gateway
+    ports:
+      - "8093:8093"
+    networks:
+      - backend
+    depends_on:
+      - conge-service
+      - employe-service
+      - gestion-paie
+      - recrutement-service
+      - eureka-server
+
+  eureka-server:
+    image: eureka-server-image
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - backend
+
+  conge-service:
+    image: conge-service-image
+    container_name: conge-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://MicroServices_congeDB:3306/MicroServices_congeDB?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      - MicroServices_congeDB
+    networks:
+      - backend
+
+  recrutement-service:
+    image: recrutement-service-image
+    container_name: recrutement-service-Service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://job_offers_db:3306/job_offers_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      - job_offers_db
+    networks:
+      - backend
+
+  employe-service:
+    image: employe-service-image
+    container_name: employe-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://order-service:3306/order-service?createDatabaseIfNotExist=true&useSSL=false&max_allowed_packet=15728640
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root  
+    depends_on:
+      - order-service
+    networks:
+      - backend
+
+  gestion-paie:
+    image: gestion-paie-image
+    container_name: gestion-paie
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:gestionPaie;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    networks:
+      - backend
+
+  MicroServices_congeDB:
+    image: mysql:5.7
+    container_name: MicroServices_congeDB
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=MicroServices_congeDB
+    ports:
+      - "3307:3306"
+    networks:
+      - backend
+
+  job_offers_db:
+    image: mysql:5.7
+    container_name: job_offers_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=job_offers_db
+    ports:
+      - "3308:3306"
+    networks:
+      - backend
+
+  order-service:
+    image: mysql:5.7
+    container_name: order-service
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=order-service
+    ports:
+      - "3309:3306"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
