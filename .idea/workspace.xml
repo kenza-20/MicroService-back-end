@@ -4,19 +4,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13604e1e-7610-47cc-abec-61647c1509c5" name="Changes" comment="" />
+    <list default="true" id="af023c95-7e18-49c0-b176-542906672131" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Eureka Server/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eureka Server/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eureka Server/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eureka Server/src/test/java/com/esprit/microservice/eurekaserver/EurekaServerApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/pdfs/bulletin_1_1740054506881.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/pdfs/bulletin_1_1740153911027.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/pdfs/bulletin_1_1740154043478.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/pdfs/bulletin_1_1740155179159.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/pdfs/bulletin_1_1740155241622.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/pdfs/bulletin_2_1740151621051.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/pdfs/bulletin_3_1740153010671.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/pdfs/bulletin_4_1740153453642.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/pdfs/bulletin_test.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/GestioonRhEtPaieApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/controller/PaieController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/entities/BulletinDePaie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/entities/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/repository/BulletinDePaieRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/repository/EmployeeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/services/PaieService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eureka_TechGear/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/Eureka Server/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eureka_TechGear/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Eureka Server/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eureka_TechGear/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Eureka Server/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eureka_TechGear/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eureka_TechGear/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/Eureka Server/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eureka_TechGear/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/Eureka Server/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eureka_TechGear/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gestionPaie/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eureka_TechGear/src/main/java/com/esprit/ms/eureka_4twin2/Eureka4Twin2Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eureka Server/src/main/java/com/esprit/microservice/eurekaserver/EurekaServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eureka_TechGear/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eureka_TechGear/src/test/java/com/esprit/ms/eureka_4twin2/Eureka4Twin2ApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestionPaie/src/test/java/com/example/gestioonrhetpaie/GestioonRhEtPaieApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/src/main/java/com/esprit/ms/apigateway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/apigateway/src/main/java/com/esprit/ms/apigateway/ApiGatewayApplication.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -29,34 +65,44 @@
     </option>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
+  "associatedIndex": 7
 }]]></component>
-  <component name="ProjectId" id="2vBEz2lvRjacTTcL2mv2U2o80lS" />
+  <component name="ProjectId" id="2vH0WH5zxW9E2SX4TtnsnUDMCJ6" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/amir/Desktop/backendmicro/apigateway",
+    "git-widget-placeholder": "gestionemploye",
+    "last_opened_file_path": "C:/Users/riadh/Desktop/4Twin/MicroService-back-end",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\riadh\Desktop\4Twin\MicroService-back-end" />
+      <recent name="C:\Users\riadh\Desktop\4Twin\MicroService-back-end\gestionPaie" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="BackendmicroApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="backendmicro" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.micro.backendmicro.BackendmicroApplication" />
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="MicroService-back-end" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="MicroService-back-end" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -65,12 +111,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="13604e1e-7610-47cc-abec-61647c1509c5" name="Changes" comment="" />
-      <created>1743610332062</created>
+      <changelist id="af023c95-7e18-49c0-b176-542906672131" name="Changes" comment="" />
+      <created>1743786724923</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1743610332062</updated>
-      <workItem from="1743610333119" duration="4583000" />
+      <updated>1743786724923</updated>
+      <workItem from="1743786726066" duration="383000" />
     </task>
     <servers />
   </component>
