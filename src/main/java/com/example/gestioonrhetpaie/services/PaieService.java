@@ -1,7 +1,9 @@
 package com.example.gestioonrhetpaie.services;
 
 import com.example.gestioonrhetpaie.entities.BulletinDePaie;
+import com.example.gestioonrhetpaie.entities.Employee;
 import com.example.gestioonrhetpaie.repository.BulletinDePaieRepository;
+import com.example.gestioonrhetpaie.repository.EmployeeRepository;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.element.Paragraph;
 import jakarta.mail.internet.MimeMessage;
@@ -25,6 +27,8 @@ public class PaieService {
     public BulletinDePaieRepository repository;
     @Autowired
     public JavaMailSender mailSender;
+    @Autowired
+    public EmployeeRepository employeeRepository;
 
 
     public BulletinDePaie calculerPaie(Long employeeId, Double heuresTravailleesParSemaine, Double tauxHoraire,
@@ -111,5 +115,9 @@ public class PaieService {
 
     public Optional<BulletinDePaie> findById(Long id) {
         return repository.findById(id);
+    }
+
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
     }
 }
