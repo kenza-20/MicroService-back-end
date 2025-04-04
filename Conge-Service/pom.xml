@@ -77,6 +77,11 @@
 			<version>2.1.0</version> <!-- Update to the latest compatible version -->
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
 
 
 		<dependency>
