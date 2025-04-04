@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .  # 👈 correction ici !
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/job_offers_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+  db:
+    image: mysql:8
+    container_name: mysql-db
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: job_offers_db
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
