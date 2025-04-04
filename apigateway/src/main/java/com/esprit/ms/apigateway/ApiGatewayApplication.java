@@ -20,7 +20,7 @@ public class ApiGatewayApplication {
         return builder.routes()
                 //nom de l'app ds app.propreties
                 .route("employe-service",r->r.path("/api/employes/**") //tous les path sous order
-                        .uri("lb://employe-service"))//port order=8080
+                        .uri("lb://employe-service"))//port order=8082
 
                         .route("job-offers-service",r->r.path("/api/joboffers/**") //tous les path sous order
                         .uri("lb://job-offers-service"))//port order=8081
