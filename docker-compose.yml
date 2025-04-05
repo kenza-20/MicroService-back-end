@@ -1,70 +1,100 @@
+version: '3.9'
+
 services:
+
+  # ✅ Eureka Discovery Server
+  eureka-server:
+    image: eureka-server-image
+    build: ./Eureka-Server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    hostname: eureka
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    networks:
+      - backend
+
+  # ✅ API Gateway
   api-gateway:
     image: api-gateway-image
+    build: ./api-gateway
     container_name: api-gateway
     ports:
       - "8093:8093"
-    networks:
-      - backend
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
     depends_on:
       - conge-service
       - employe-service
       - gestion-paie
       - recrutement-service
       - eureka-server
-
-  eureka-server:
-    image: eureka-server-image
-    container_name: eureka-server
-    ports:
-      - "8761:8761"
     networks:
       - backend
 
+  # ✅ Congé Microservice
   conge-service:
     image: conge-service-image
+    build: ./Conge-Service
     container_name: conge-service
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://MicroServices_congeDB:3306/MicroServices_congeDB?createDatabaseIfNotExist=true
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
     depends_on:
+      - eureka-server
       - MicroServices_congeDB
     networks:
       - backend
 
+  # ✅ Recrutement Microservice
   recrutement-service:
     image: recrutement-service-image
-    container_name: recrutement-service-Service
+    build: ./Recrutement
+    container_name: recrutement-service
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://job_offers_db:3306/job_offers_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
     depends_on:
+      - eureka-server
       - job_offers_db
     networks:
       - backend
 
+  # ✅ Employé Microservice
   employe-service:
     image: employe-service-image
+    build: ./Employe-Service
     container_name: employe-service
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://order-service:3306/order-service?createDatabaseIfNotExist=true&useSSL=false&max_allowed_packet=15728640
       - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root  
+      - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
     depends_on:
+      - eureka-server
       - order-service
     networks:
       - backend
 
+  # ✅ Gestion Paie Microservice
   gestion-paie:
     image: gestion-paie-image
+    build: ./gestionPaie
     container_name: gestion-paie
     environment:
       - SPRING_DATASOURCE_URL=jdbc:h2:mem:gestionPaie;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
     networks:
       - backend
 
+  # ✅ Base de données pour Congé Service
   MicroServices_congeDB:
     image: mysql:5.7
     container_name: MicroServices_congeDB
@@ -76,6 +106,7 @@ services:
     networks:
       - backend
 
+  # ✅ Base de données pour Recrutement Service
   job_offers_db:
     image: mysql:5.7
     container_name: job_offers_db
@@ -87,6 +118,7 @@ services:
     networks:
       - backend
 
+  # ✅ Base de données pour Employé Service
   order-service:
     image: mysql:5.7
     container_name: order-service
