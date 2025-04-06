@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  gestion-rh-et-paie:
+    build: .
+    container_name: gestion-rh-et-paie
+    ports:
+      - "8082:8082"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:tcp://db/~/testdb
+      - SPRING_DATASOURCE_DRIVERCLASSNAME=org.h2.Driver
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=
+    networks:
+      - gestion-network
+
+  db:
+    image: oscarfonts/h2
+    container_name: h2-database
+    ports:
+      - "1522:1521"  # Modification du port pour éviter les conflits
+      - "8083:81"    # Interface Web H2 accessible sur localhost:8083
+    environment:
+      - H2_OPTIONS=-ifNotExists
+    networks:
+      - gestion-network
+
+networks:
+  gestion-network:
+    driver: bridge
