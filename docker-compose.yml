@@ -41,7 +41,7 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://MicroServices_congeDB:3306/MicroServices_congeDB?createDatabaseIfNotExist=true
       - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_PASSWORD=
       - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.cj.jdbc.Driver
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
       - SPRING_JPA_HIBERNATE_DDL-AUTO=update
@@ -103,6 +103,19 @@ services:
     networks:
       - backend
 
+  # ✅ Gestion Notification Microservice
+  gestion-notification:
+    image: gestion-notification-image
+    build: ./GestionNotification
+    container_name: gestion-notification
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:gestionNotification;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+    networks:
+      - backend
+
   # ✅ Base de données pour Congé Service
   MicroServices_congeDB:
     image: mysql:5.7
@@ -142,3 +155,5 @@ services:
 networks:
   backend:
     driver: bridge
+
+

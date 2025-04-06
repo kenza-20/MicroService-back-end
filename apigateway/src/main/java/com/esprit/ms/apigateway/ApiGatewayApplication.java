@@ -20,16 +20,19 @@ public class ApiGatewayApplication {
         return builder.routes()
                 //nom de l'app ds app.propreties
                 .route("employe-service",r->r.path("/api/employes/**") //tous les path sous order
-                        .uri("lb://employe-service"))//port order=8082
+                        .uri("http://employe-service:8082"))//port order=8082
 
                         .route("job-offers-service",r->r.path("/api/joboffers/**") //tous les path sous order
-                        .uri("lb://job-offers-service"))//port order=8081
+                        .uri("http://job-offers-service:8081"))//port order=8081
 
-                        .route("GestionRHEtPaie",r->r.path("/api/conge/**") //tous les path sous order
-                        .uri("lb://GestionRHEtPaie"))//port order=8085
+                        .route("conge-service",r->r.path("/api/conge/**") //tous les path sous order
+                        .uri("http://conge-service:8085"))//port order=8085
 
                         .route("GestionPaie",r->r.path("/api/paie/**") //tous les path sous order
-                        .uri("lb://GestionPaie"))//port order=8083
+                        .uri("http://gestion-paie:8083"))//port order=8083
+
+                        .route("GestionNotification",r->r.path("/api/notification/**") //tous les path sous order
+                        .uri("http://gestion-notification:8086"))//port order=8086
 
                 .build();
     }
