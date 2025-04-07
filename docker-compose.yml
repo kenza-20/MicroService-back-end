@@ -70,6 +70,8 @@ services:
     image: recrutement-service-image
     build: ./Recrutement
     container_name: recrutement-service
+    ports: # 🔥 À AJOUTER ICI
+      - "8081:8081"                   # 🔥
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://job_offers_db:3306/job_offers_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
       - SPRING_DATASOURCE_USERNAME=root
@@ -83,6 +85,7 @@ services:
       - job_offers_db
     networks:
       - backend
+
 
   # ✅ Employé Microservice
   employe-service:

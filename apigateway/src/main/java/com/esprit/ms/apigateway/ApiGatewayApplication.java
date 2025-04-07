@@ -22,10 +22,8 @@ public class ApiGatewayApplication {
                 .route("employe-service",r->r.path("/api/employes/**") //tous les path sous order
                         .uri("http://employe-service:8082"))//port order=8082
 
-                        .route("job-offers-service",r->r.path("/api/joboffers/**") //tous les path sous order
-                        .uri("http://job-offers-service:8081"))//port order=8081
 
-                        .route("conge-service",r->r.path("/api/conge/**") //tous les path sous order
+                .route("conge-service",r->r.path("/api/conge/**") //tous les path sous order
                         .uri("http://conge-service:8085"))//port order=8085
 
                         .route("GestionPaie",r->r.path("/api/paie/**") //tous les path sous order
