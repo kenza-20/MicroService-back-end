@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:4200") // Change l'URL selon ton environnement
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/joboffers")
 public class AuthController {
     private final UserService userService;
     private final JwtService jwtService;

@@ -1,6 +1,18 @@
 version: '3.9'
 
 services:
+  # ✅ Keycloak ajouté ici !
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.1
+    container_name: keycloak
+    command: start-dev
+    ports:
+      - "8180:8080"  # ⬅️ ici on mappe 8180 (host) vers 8080 (container)
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    networks:
+      - backend
 
   # ✅ Eureka Discovery Server
   eureka-server:
@@ -18,7 +30,7 @@ services:
   # ✅ API Gateway
   api-gateway:
     image: api-gateway-image
-    build: ./api-gateway
+    build: ./apigateway
     container_name: api-gateway
     ports:
       - "8093:8093"
@@ -34,23 +46,24 @@ services:
       - backend
 
   # ✅ Congé Microservice
+    # ✅ Congé Microservice
   conge-service:
     image: conge-service-image
-    build: ./Conge-Service
+    build: ./conge-service
     container_name: conge-service
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://MicroServices_congeDB:3306/MicroServices_congeDB?createDatabaseIfNotExist=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=
-      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.cj.jdbc.Driver
-      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
-      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+        - SPRING_DATASOURCE_URL=jdbc:mysql://conge-db:3306/conge-db?createDatabaseIfNotExist=true
+        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=root
+        - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+        - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     depends_on:
-      - eureka-server
-      - MicroServices_congeDB
+        - eureka-server
+        - conge-db
     networks:
-      - backend
+        - backend
 
   # ✅ Recrutement Microservice
   recrutement-service:
@@ -117,16 +130,17 @@ services:
       - backend
 
   # ✅ Base de données pour Congé Service
-  MicroServices_congeDB:
-    image: mysql:5.7
-    container_name: MicroServices_congeDB
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=MicroServices_congeDB
-    ports:
-      - "3307:3306"
-    networks:
-      - backend
+    # ✅ Base de données pour Congé Service
+  conge-db:
+     image: mysql:8.0
+     container_name: conge-db
+     environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=conge-db
+     ports:
+        - "3307:3306"
+     networks:
+        - backend
 
   # ✅ Base de données pour Recrutement Service
   job_offers_db:
@@ -155,5 +169,3 @@ services:
 networks:
   backend:
     driver: bridge
-
-

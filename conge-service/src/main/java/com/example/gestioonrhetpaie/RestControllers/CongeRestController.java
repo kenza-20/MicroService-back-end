@@ -3,7 +3,6 @@ package com.example.gestioonrhetpaie.RestControllers;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,7 +11,6 @@ import com.example.gestioonrhetpaie.Entity.Conge;
 import com.example.gestioonrhetpaie.Entity.StatutConge;
 import com.example.gestioonrhetpaie.Services.ICongeService;
 
-@Tag(name = "Gestion Conge")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/conge")
@@ -81,4 +79,3 @@ public class CongeRestController {
         }
     }
 }
-
