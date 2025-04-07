@@ -5,30 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c543397-9a88-49cc-a389-c8137b6d2400" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apigateway/src/main/java/com/esprit/SecurityConfig/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/src/main/java/com/example/gestioonrhetpaie/Entity/Conge.java" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/src/main/java/com/example/gestioonrhetpaie/Entity/Conge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/src/main/java/com/example/gestioonrhetpaie/Entity/StatutConge.java" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/src/main/java/com/example/gestioonrhetpaie/Entity/StatutConge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/src/main/java/com/example/gestioonrhetpaie/GestioonRhEtPaieApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/src/main/java/com/example/gestioonrhetpaie/GestioonRhEtPaieApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/src/main/java/com/example/gestioonrhetpaie/Repositories/CongeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/src/main/java/com/example/gestioonrhetpaie/Repositories/CongeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/src/main/java/com/example/gestioonrhetpaie/RestControllers/CongeRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/src/main/java/com/example/gestioonrhetpaie/RestControllers/CongeRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/src/main/java/com/example/gestioonrhetpaie/Services/CongeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/src/main/java/com/example/gestioonrhetpaie/Services/CongeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/src/main/java/com/example/gestioonrhetpaie/Services/ICongeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/src/main/java/com/example/gestioonrhetpaie/Services/ICongeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conge-Service/src/test/java/com/example/gestioonrhetpaie/GestioonRhEtPaieApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/src/test/java/com/example/gestioonrhetpaie/GestioonRhEtPaieApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/security/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/security/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recrutement/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apigateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/apigateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/src/main/java/com/esprit/SecurityConfig/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/apigateway/src/main/java/com/esprit/SecurityConfig/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apigateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/apigateway/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
