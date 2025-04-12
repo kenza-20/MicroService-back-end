@@ -5,11 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c543397-9a88-49cc-a389-c8137b6d2400" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Employe-Service/src/main/java/com/micro/backendmicro/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GestionNotification/src/main/java/com/example/gestioonrhetpaie/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apigateway/src/main/java/com/esprit/ms/apigateway/SecurityConfig/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conge-service/src/main/java/com/example/gestioonrhetpaie/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employe-Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Employe-Service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employe-Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Employe-Service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionNotification/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionNotification/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionNotification/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/GestionNotification/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recrutement/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recrutement/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apigateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/apigateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apigateway/src/main/java/com/esprit/SecurityConfig/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/apigateway/src/main/java/com/esprit/SecurityConfig/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/src/main/java/com/esprit/SecurityConfig/SecurityConfig.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/apigateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/apigateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conge-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conge-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/conge-service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionPaie/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gestionPaie/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/controller/PaieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/controller/PaieController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/services/PaieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/services/PaieService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionPaie/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gestionPaie/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +61,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "PreFinal",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/MSI/Desktop/MicroService-back-end/GestionNotification",
@@ -57,6 +77,10 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\MSI\Desktop\MicroService-back-end\GestionNotification" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\LENOVO\MicroService-back-end\apigateway\src\main\java\com\esprit\ms\apigateway\SecurityConfig" />
+      <recent name="C:\Users\LENOVO\MicroService-back-end\apigateway\src\main\java\com\esprit\ms\apigateway" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
@@ -67,6 +91,14 @@
       </method>
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -76,6 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1743942706852</updated>
       <workItem from="1743942714051" duration="11416000" />
+      <workItem from="1744205056419" duration="21323000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,8 @@ import com.example.gestioonrhetpaie.entities.BulletinDePaie;
 import com.example.gestioonrhetpaie.entities.Employee;
 import com.example.gestioonrhetpaie.services.PaieService;
 import io.swagger.v3.oas.annotations.Operation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/paie")
 public class PaieController {
+
+    private static final Logger log = LoggerFactory.getLogger(PaieController.class);
+
     @Autowired
     private PaieService paieService;
 
@@ -23,8 +28,9 @@ public class PaieController {
                                        @RequestParam Double tauxHoraire,
                                        @RequestParam Double prime,
                                        @RequestParam Double deduction,
-                                       @RequestParam Double acompte,@RequestParam String email) {
-        return paieService.calculerPaie(employeeId, heuresTravaillees, tauxHoraire, prime, deduction,acompte,email);
+                                       @RequestParam Double acompte,
+                                       @RequestParam String email) {
+        return paieService.calculerPaie(employeeId, heuresTravaillees, tauxHoraire, prime, deduction, acompte, email);
     }
 
     @GetMapping("/historique/{employeeId}")
@@ -36,7 +42,15 @@ public class PaieController {
     // Endpoint pour récupérer tous les bulletins
     @GetMapping("/all")
     public List<BulletinDePaie> findAll() {
-        return paieService.findAll();
+        log.info("🔍 [GET] /api/paie/all appelé");
+        try {
+            List<BulletinDePaie> result = paieService.findAll();
+            log.info("✅ Résultat retourné : {} bulletins", result.size());
+            return result;
+        } catch (Exception e) {
+            log.error("❌ Erreur lors de la récupération des bulletins de paie", e);
+            throw e;
+        }
     }
 
     // Endpoint pour récupérer un bulletin par son id
@@ -49,8 +63,4 @@ public class PaieController {
     public List<Employee> findAllEmployees() {
         return paieService.getAllEmployees();
     }
-
-
-
-
 }

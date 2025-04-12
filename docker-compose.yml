@@ -1,18 +1,18 @@
 version: '3.9'
 
 services:
-  # ✅ Keycloak ajouté ici !
-#  keycloak:
-#    image: quay.io/keycloak/keycloak:24.0.1
-#    container_name: keycloak
-#    command: start-dev
-#    ports:
-#      - "8180:8080"  # ⬅️ ici on mappe 8180 (host) vers 8080 (container)
-#    environment:
-#      KEYCLOAK_ADMIN: admin
-#      KEYCLOAK_ADMIN_PASSWORD: admin
-#    networks:
-#      - backend
+   #✅ Keycloak ajouté ici !
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.1
+    container_name: keycloak
+    command: start-dev --import-realm
+    ports:
+      - "8180:8080"  # ⬅️ ici on mappe 8180 (host) vers 8080 (container)
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    networks:
+      - backend
 
   # ✅ Eureka Discovery Server
   eureka-server:
