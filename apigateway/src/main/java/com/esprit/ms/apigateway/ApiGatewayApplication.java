@@ -32,5 +32,6 @@ public class ApiGatewayApplication {
                         .uri("lb://GestionPaie"))//port order=8083
 */
                 .build();
+
     }
 }
