@@ -1,13 +1,16 @@
 package com.example.webdist.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+
 import java.time.LocalDateTime;
 
 @Entity
 @Data
 @Table(name = "applications")
 public class Application {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,17 +21,21 @@ public class Application {
 
     @ManyToOne
     @JoinColumn(name = "job_offer_id")
+    @JsonIgnore  // 🛡️ Évite la récursion infinie dans le JSON
     private JobOffer jobOffer;
 
-    private LocalDateTime applicationDate;
+    @Column(nullable = true)
     private String coverLetter;
 
     @Enumerated(EnumType.STRING)
     private ApplicationStatus status = ApplicationStatus.PENDING;
 
-    // ✅ Ajouté pour postuler
     private String fullName;
     private String email;
     private String cvUrl;
+
+    @Column(nullable = true)
+    private LocalDateTime applicationDate;
+
     private LocalDateTime appliedAt;
 }

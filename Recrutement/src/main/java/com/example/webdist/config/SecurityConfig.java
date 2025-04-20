@@ -1,4 +1,5 @@
 package com.example.webdist.config;
+import org.springframework.http.HttpMethod;
 
 import com.example.webdist.config.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
@@ -44,14 +45,19 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        // 👇 Public endpoints (pas besoin de token)
                         .requestMatchers("/api/joboffers/login", "/api/joboffers/register").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/joboffers").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/joboffers/**").permitAll()
 
+                        // 👇 Tout le reste nécessite un token
+                        .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
+
 
 
     @Bean

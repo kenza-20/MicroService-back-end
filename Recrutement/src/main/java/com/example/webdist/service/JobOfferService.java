@@ -30,17 +30,14 @@ public class JobOfferService {
         this.userRepository = userRepository;
     }
 
-    // ✅ Méthode : récupérer toutes les offres
     public List<JobOffer> getAllOffers() {
         return jobOfferRepository.findAll();
     }
 
-    // ✅ Méthode : créer une offre
     public JobOffer createOffer(JobOffer offer) {
         return jobOfferRepository.save(offer);
     }
 
-    // ✅ Méthode : modifier une offre
     @Transactional
     public JobOffer updateOffer(Long id, JobOffer updatedOffer) {
         JobOffer existingOffer = jobOfferRepository.findById(id)
@@ -55,57 +52,53 @@ public class JobOfferService {
         return jobOfferRepository.save(existingOffer);
     }
 
-
-    // ✅ Méthode : supprimer une offre
     @Transactional
     public void deleteOffer(Long id) {
         JobOffer offer = jobOfferRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Job offer not found"));
+                .orElseThrow(() -> new RuntimeException("Offre non trouvée"));
 
-        // Supprimer les candidatures liées
         applicationRepository.deleteByJobOfferId(id);
-
         jobOfferRepository.delete(offer);
     }
 
-    // ✅ Méthode : postuler à une offre
     @Transactional
     public Application applyToOffer(Long jobId, ApplicationRequest request) {
+        System.out.println("▶️ [POST] /api/joboffers/" + jobId + "/apply");
+        System.out.println("📥 Reçu : " + request);
 
-        // 🔍 Récupérer l'offre à partir de l'ID
-        JobOffer offer = jobOfferRepository.findById(jobId)
-                .orElseThrow(() -> new RuntimeException("Offre non trouvée"));
-
-        // 🔐 Récupérer l'utilisateur connecté via le SecurityContext
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         System.out.println("🔐 Utilisateur connecté : " + username);
 
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+                .orElseThrow(() -> {
+                    System.err.println("❌ Utilisateur non trouvé pour username : " + username);
+                    return new IllegalArgumentException("Utilisateur non trouvé !");
+                });
 
-        // 🧾 Debug des données reçues depuis le corps de la requête
-        System.out.println("📄 Candidat : " + request.getFullName());
+        JobOffer offer = jobOfferRepository.findById(jobId)
+                .orElseThrow(() -> {
+                    System.err.println("❌ Offre non trouvée pour l’ID : " + jobId);
+                    return new IllegalArgumentException("Offre non trouvée !");
+                });
+
+        System.out.println("📌 Candidat : " + request.getFullName());
         System.out.println("📧 Email : " + request.getEmail());
         System.out.println("📎 CV : " + request.getCvUrl());
 
-        // 📝 Créer une nouvelle entité de candidature
         Application application = new Application();
         application.setUser(user);
         application.setJobOffer(offer);
         application.setFullName(request.getFullName());
         application.setEmail(request.getEmail());
         application.setCvUrl(request.getCvUrl());
-        application.setAppliedAt(LocalDateTime.now()); // ou application.setApplicationDate(...) si nécessaire
+        application.setAppliedAt(LocalDateTime.now());
+        application.setApplicationDate(LocalDateTime.now());
 
-        // 💾 Enregistrer dans la base
         Application saved = applicationRepository.save(application);
-
         System.out.println("✅ Candidature enregistrée avec ID : " + saved.getId());
 
         return saved;
     }
-
-
 
     public List<ApplicationResponse> getAllApplicationResponses() {
         return applicationRepository.findAll()
@@ -117,6 +110,4 @@ public class JobOfferService {
                 ))
                 .toList();
     }
-
-
 }
