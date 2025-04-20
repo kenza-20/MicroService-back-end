@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/ConfigServer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Employe-Service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Eureka_TechGear/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Evaluation-final/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Recretment/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/apigateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gestionConge/src/main/java" charset="UTF-8" />
+  </component>
+</project>
