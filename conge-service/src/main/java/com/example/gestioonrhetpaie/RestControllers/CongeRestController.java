@@ -12,7 +12,7 @@ import com.example.gestioonrhetpaie.Entity.StatutConge;
 import com.example.gestioonrhetpaie.Services.ICongeService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:8093")
 @RequestMapping("/api/conge")
 @AllArgsConstructor
 public class CongeRestController {
