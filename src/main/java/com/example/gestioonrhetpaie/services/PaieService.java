@@ -4,8 +4,10 @@ import com.example.gestioonrhetpaie.entities.BulletinDePaie;
 import com.example.gestioonrhetpaie.entities.Employee;
 import com.example.gestioonrhetpaie.repository.BulletinDePaieRepository;
 import com.example.gestioonrhetpaie.repository.EmployeeRepository;
+import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
@@ -15,9 +17,11 @@ import org.springframework.stereotype.Service;
 import com.itextpdf.layout.Document;
 
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,7 +56,7 @@ public class PaieService {
 
 //        // Génération du PDF
         String pdfPath = "pdfs/bulletin_" + employeeId + "_" + System.currentTimeMillis() + ".pdf";
-        generatePdf(bulletin, pdfPath);
+        genererPDF(bulletin, pdfPath);
         bulletin.setPdfPath(pdfPath);
 
         // Sauvegarder le bulletin en base
@@ -68,28 +72,49 @@ public class PaieService {
         return repository.findByEmployeeId(employeeId);
     }
 
-    public void generatePdf(BulletinDePaie bulletin, String pdfPath) {
+    public byte[] genererPDF(BulletinDePaie bulletin, String nomEmploye) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
         try {
-            // Créer le dossier s'il n'existe pas
-            File pdfFolder = new File("pdfs");
-            if (!pdfFolder.exists()) {
-                pdfFolder.mkdirs();
-            }
-            PdfWriter writer = new PdfWriter(new FileOutputStream(pdfPath));
-            com.itextpdf.kernel.pdf.PdfDocument pdfDoc = new com.itextpdf.kernel.pdf.PdfDocument(writer);
-            Document document = new Document(pdfDoc);
+            repository.save(bulletin);
+            PdfWriter writer = new PdfWriter(out);
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf);
 
-            document.add(new Paragraph("Bulletin de Paie"));
-            document.add(new Paragraph("Employee ID: " + bulletin.getEmployeeId()));
-            document.add(new Paragraph("Période: " + bulletin.getPeriode()));
-            document.add(new Paragraph("Salaire Brut: " + bulletin.getSalaireBrut()));
-            document.add(new Paragraph("Salaire Net: " + bulletin.getSalaireNet()));
+            // Infos avec valeurs sûres
+            int heures = bulletin.getHeuresTravaillees();
+            double taux = bulletin.getTauxHoraire() != null ? bulletin.getTauxHoraire() : 0.0;
+            double prime = bulletin.getPrime() != null ? bulletin.getPrime() : 0.0;
+            double deduction = bulletin.getDeduction() != null ? bulletin.getDeduction() : 0.0;
+            double acompte = bulletin.getAcompte() != null ? bulletin.getAcompte() : 0.0;
+            double salaireBrut = bulletin.getSalaireBrut() != null ? bulletin.getSalaireBrut() : 0.0;
+            double salaireNet = bulletin.getSalaireNet() != null ? bulletin.getSalaireNet() : 0.0;
 
+            Paragraph infos = new Paragraph()
+                    .add("Employé : " + (nomEmploye != null ? nomEmploye : "N/A") + "\n")
+                    .add("Date : " + LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\n")
+                    .add("Heures travaillées : " + heures + "\n")
+                    .add("Taux horaire : " + taux + " DT\n")
+                    .add("Prime : " + prime + " DT\n")
+                    .add("Déductions : " + deduction + " DT\n")
+                    .add("Acompte : " + acompte + " DT\n")
+                    .add("\nSalaire Brut à Payer : " + salaireBrut + " DT")
+                    .add("\nSalaire Net à Payer : " + salaireNet + " DT");
+
+            document.add(new Paragraph("Bulletin de Paie").setTextAlignment(TextAlignment.CENTER).setFontSize(18).setBold());
+            document.add(infos);
+            document.add(new Paragraph("Signature").setTextAlignment(TextAlignment.RIGHT).setMarginTop(30));
             document.close();
+
+            return out.toByteArray();
+
         } catch (Exception e) {
             e.printStackTrace();
+            return new byte[0];
         }
     }
+
+
 
     private void sendEmailWithPdf(String email, String pdfPath) {
         try {
@@ -120,4 +145,14 @@ public class PaieService {
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
+
+    public Employee addEmploye(String nom, String prenom, String email) {
+        Employee employee = new Employee();
+        employee.setNom(nom);
+        employee.setPrenom(prenom);
+        employee.setEmail(email);
+
+        return employeeRepository.save(employee);
+    }
+
 }
