@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8093")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api")
 public class PaieController {
     @Autowired
