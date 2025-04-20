@@ -19,7 +19,44 @@ public class BulletinDePaie {
     private Double salaireNet;
     private String pdfPath;
     private Double acompte;
+    private int heuresTravaillees;
 
+    private Double tauxHoraire;
+    private Double prime;
+
+    private Double deduction;
+
+    public int getHeuresTravaillees() {
+        return heuresTravaillees;
+    }
+
+    public void setHeuresTravaillees(int heuresTravaillees) {
+        this.heuresTravaillees = heuresTravaillees;
+    }
+
+    public Double getTauxHoraire() {
+        return tauxHoraire;
+    }
+
+    public void setTauxHoraire(Double tauxHoraire) {
+        this.tauxHoraire = tauxHoraire;
+    }
+
+    public Double getPrime() {
+        return prime;
+    }
+
+    public void setPrime(Double prime) {
+        this.prime = prime;
+    }
+
+    public Double getDeduction() {
+        return deduction;
+    }
+
+    public void setDeduction(Double deduction) {
+        this.deduction = deduction;
+    }
 
     public Long getId() {
         return id;

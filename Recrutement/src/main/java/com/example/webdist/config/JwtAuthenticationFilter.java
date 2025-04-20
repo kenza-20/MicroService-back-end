@@ -1,4 +1,4 @@
-package com.example.webdist.config;
+/*package com.example.webdist.config;
 
 import com.example.webdist.service.JwtService;
 import jakarta.servlet.FilterChain;
@@ -69,4 +69,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         chain.doFilter(request, response);
     }
-}
+}*/

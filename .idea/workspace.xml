@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c543397-9a88-49cc-a389-c8137b6d2400" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/config/CorsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/config/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/config/JwtAuthenticationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/entity/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/entity/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/controller/JobOfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/controller/JobOfferController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/entity/JobOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/entity/JobOffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/service/JobOfferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recrutement/src/main/java/com/example/webdist/service/JobOfferService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/controller/PaieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestionPaie/src/main/java/com/example/gestioonrhetpaie/controller/PaieController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +94,8 @@
       <workItem from="1745108353866" duration="455000" />
       <workItem from="1745112585777" duration="338000" />
       <workItem from="1745114191967" duration="410000" />
-      <workItem from="1745115430848" duration="578000" />
+      <workItem from="1745115430848" duration="2044000" />
+      <workItem from="1745160022243" duration="336000" />
     </task>
     <servers />
   </component>

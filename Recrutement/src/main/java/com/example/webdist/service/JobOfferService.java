@@ -8,7 +8,6 @@ import com.example.webdist.entity.User;
 import com.example.webdist.repository.ApplicationRepository;
 import com.example.webdist.repository.JobOfferRepository;
 import com.example.webdist.repository.UserRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,21 +34,23 @@ public class JobOfferService {
     }
 
     public JobOffer createOffer(JobOffer offer) {
+        offer.setCreatedAt(LocalDateTime.now());
         return jobOfferRepository.save(offer);
     }
 
     @Transactional
     public JobOffer updateOffer(Long id, JobOffer updatedOffer) {
-        JobOffer existingOffer = jobOfferRepository.findById(id)
+        JobOffer existing = jobOfferRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Offre non trouvée"));
 
-        existingOffer.setTitle(updatedOffer.getTitle());
-        existingOffer.setDescription(updatedOffer.getDescription());
-        existingOffer.setCompany(updatedOffer.getCompany());
-        existingOffer.setLocation(updatedOffer.getLocation());
-        existingOffer.setSalary(updatedOffer.getSalary());
+        existing.setTitle(updatedOffer.getTitle());
+        existing.setDescription(updatedOffer.getDescription());
+        existing.setCompany(updatedOffer.getCompany());
+        existing.setLocation(updatedOffer.getLocation());
+        existing.setSalary(updatedOffer.getSalary());
+        existing.setUpdatedAt(LocalDateTime.now());
 
-        return jobOfferRepository.save(existingOffer);
+        return jobOfferRepository.save(existing);
     }
 
     @Transactional
@@ -63,46 +64,32 @@ public class JobOfferService {
 
     @Transactional
     public Application applyToOffer(Long jobId, ApplicationRequest request) {
-        System.out.println("▶️ [POST] /api/joboffers/" + jobId + "/apply");
-        System.out.println("📥 Reçu : " + request);
-
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.println("🔐 Utilisateur connecté : " + username);
-
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> {
-                    System.err.println("❌ Utilisateur non trouvé pour username : " + username);
-                    return new IllegalArgumentException("Utilisateur non trouvé !");
-                });
-
         JobOffer offer = jobOfferRepository.findById(jobId)
-                .orElseThrow(() -> {
-                    System.err.println("❌ Offre non trouvée pour l’ID : " + jobId);
-                    return new IllegalArgumentException("Offre non trouvée !");
+                .orElseThrow(() -> new RuntimeException("Offre non trouvée"));
+
+        // Utilisateur fictif (car plus d'auth) → on crée un user de base
+        User user = userRepository.findByUsername(request.getEmail())
+                .orElseGet(() -> {
+                    User newUser = new User();
+                    newUser.setUsername(request.getEmail());
+                    newUser.setPassword("default"); // juste pour éviter null
+                    return userRepository.save(newUser);
                 });
 
-        System.out.println("📌 Candidat : " + request.getFullName());
-        System.out.println("📧 Email : " + request.getEmail());
-        System.out.println("📎 CV : " + request.getCvUrl());
+        Application app = new Application();
+        app.setUser(user);
+        app.setJobOffer(offer);
+        app.setFullName(request.getFullName());
+        app.setEmail(request.getEmail());
+        app.setCvUrl(request.getCvUrl());
+        app.setAppliedAt(LocalDateTime.now());
+        app.setApplicationDate(LocalDateTime.now());
 
-        Application application = new Application();
-        application.setUser(user);
-        application.setJobOffer(offer);
-        application.setFullName(request.getFullName());
-        application.setEmail(request.getEmail());
-        application.setCvUrl(request.getCvUrl());
-        application.setAppliedAt(LocalDateTime.now());
-        application.setApplicationDate(LocalDateTime.now());
-
-        Application saved = applicationRepository.save(application);
-        System.out.println("✅ Candidature enregistrée avec ID : " + saved.getId());
-
-        return saved;
+        return applicationRepository.save(app);
     }
 
     public List<ApplicationResponse> getAllApplicationResponses() {
-        return applicationRepository.findAll()
-                .stream()
+        return applicationRepository.findAll().stream()
                 .map(app -> new ApplicationResponse(
                         app.getFullName(),
                         app.getEmail(),

@@ -12,24 +12,30 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "job_offers")
 public class JobOffer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
-    
+
     @Column(length = 2000)
     private String description;
-    
+
     private String company;
     private String location;
     private String salary;
-    
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    
-    @OneToMany(mappedBy = "jobOffer")
+
+    @OneToMany(mappedBy = "jobOffer", cascade = CascadeType.ALL)
     private List<Application> applications;
+
+    // 👇 Ajout du lien avec le RH qui a créé l'offre
+    @ManyToOne
+    @JoinColumn(name = "created_by_id")
+    private User createdBy;
 
     @PrePersist
     protected void onCreate() {
