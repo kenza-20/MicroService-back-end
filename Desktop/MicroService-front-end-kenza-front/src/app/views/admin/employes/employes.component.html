@@ -1,0 +1,172 @@
+<div class="flex flex-wrap mt-4">
+    <div class="w-full mb-12 px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
+        [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
+      >
+        <div class="rounded-t mb-0 px-4 py-3 border-0">
+          <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+              <h3
+                class="font-semibold text-lg"
+                [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
+              >
+                Employes
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="block w-full overflow-x-auto">
+          <!-- Table des employés -->
+          <table class="items-center w-full bg-transparent border-collapse">
+            <thead>
+            <tr>
+              <th
+                class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                [ngClass]="
+                color === 'light'
+                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                  : 'bg-red-800 text-red-300 border-red-700'
+              "
+              >
+                Nom
+              </th>
+              <th
+                class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                [ngClass]="
+                color === 'light'
+                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                  : 'bg-red-800 text-red-300 border-red-700'
+              "
+              >
+                Prenom
+              </th>
+              <th
+                class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                [ngClass]="
+                color === 'light'
+                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                  : 'bg-red-800 text-red-300 border-red-700'
+              "
+              >
+                Email
+              </th>
+              <th
+                class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                [ngClass]="
+                color === 'light'
+                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                  : 'bg-red-800 text-red-300 border-red-700'
+              "
+              >
+                Action
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emp of employes">
+              <td class="px-6 py-4 whitespace-nowrap border-t">
+                {{ emp.nom }}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap border-t">
+                {{ emp.prenom }}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap border-t">
+                {{ emp.email }}
+              </td>
+              <!-- Icône PDF -->
+              <td class="px-6 py-4 whitespace-nowrap border-t flex gap-2">
+                <!-- Bouton PDF -->
+                <button
+                  (click)="openModal(emp)"
+                  class="button-commun button-pdf"
+                  title="Générer Paie"
+                >
+                  <i class="fas fa-file-pdf text-lg"></i>
+                </button>
+  
+                <!-- Bouton Historique -->
+                <button
+                  (click)="voirHistorique(emp.id)"
+                  class="button-commun button-historique"
+                  title="Voir Historique"
+                >
+                  <!-- Icône Horloge -->
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       fill="none"
+                       viewBox="0 0 24 24"
+                       stroke-width="1.5"
+                       stroke="currentColor"
+                       class="w-5 h-5">
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6l4 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </button>
+              </td>
+  
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modale de calcul de paie -->
+  <div *ngIf="modalOpen" class="fixed bg-opacity-40 z-50">
+    <div class="modal" [ngClass]="{'show': modalOpen}">
+      <div class="bg-white rounded-lg shadow p-6 w-full max-w-md">
+        <h2 class="text-lg font-semibold mb-4">Calculer la Paie</h2>
+  
+        <form (ngSubmit)="calculerPaie()">
+          <input type="number" [(ngModel)]="paieData.heuresTravaillees" name="heuresTravaillees" placeholder="Heures travaillées" required class="w-full mb-2 border p-2 rounded" />
+          <input type="number" [(ngModel)]="paieData.tauxHoraire" name="tauxHoraire" placeholder="Taux horaire" required class="w-full mb-2 border p-2 rounded" />
+          <input type="number" [(ngModel)]="paieData.prime" name="prime" placeholder="Prime" class="w-full mb-2 border p-2 rounded" />
+          <input type="number" [(ngModel)]="paieData.deduction" name="deduction" placeholder="Déduction" class="w-full mb-2 border p-2 rounded" />
+          <input type="number" [(ngModel)]="paieData.acompte" name="acompte" placeholder="Acompte" class="w-full mb-2 border p-2 rounded" />
+          <input type="email" [(ngModel)]="paieData.email" name="email" placeholder="Email" required class="w-full mb-4 border p-2 rounded" />
+  
+          <div class="flex justify-end gap-2">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Envoyer</button>
+            <button type="button" (click)="closeModal()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Annuler</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Modal d'historique complet -->
+  <div class="modal-backdrop" *ngIf="showHistoriqueModal"
+       style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1050;">
+    <div class="modal-center bg-white p-6 rounded-lg shadow-md w-full max-w-md mx-auto mt-10">
+      <h2 class="text-xl font-bold mb-4">Historique de Paie</h2>
+  
+      <div class="overflow-y-auto max-h-[400px]">
+        <table class="w-full table-auto mb-4">
+          <thead>
+          <tr>
+            <th class="text-left border-b p-2">Date</th>
+            <th class="text-left border-b p-2">Salaire Brut</th>
+            <th class="text-left border-b p-2">Salaire Net</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let h of historiqueData">
+            <td class="border-b p-2">{{ h.periode }}</td>
+            <td class="border-b p-2">{{ h.salaireBrut }} DT</td>
+            <td class="border-b p-2">{{ h.salaireNet }} DT</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="flex justify-end z-50 relative">
+        <button (click)="fermerModal()"
+                class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 border border-red-500">
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>

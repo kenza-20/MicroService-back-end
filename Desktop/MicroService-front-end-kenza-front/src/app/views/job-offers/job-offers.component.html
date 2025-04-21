@@ -1,0 +1,63 @@
+<div class="p-4">
+  <h2 class="text-2xl font-bold mb-4 mt-12">📋 Liste des Offres</h2>
+
+  <div *ngIf="offers.length === 0">Aucune offre disponible.</div>
+
+  <div *ngFor="let offer of offers" class="p-4 mb-6 border rounded shadow-md bg-white">
+    <h3 class="text-xl font-semibold text-blue-800">{{ offer.title }}</h3>
+    <p class="mb-1">{{ offer.description }}</p>
+    <p class="text-sm text-gray-500">🏢 {{ offer.company }} - 📍 {{ offer.location }}</p>
+    <p class="text-sm text-gray-500">💰 Salaire : {{ offer.salary }}</p>
+
+    <!-- 👤 Bouton visible seulement pour les utilisateurs -->
+    <button
+      *ngIf="!isHR && selectedOfferId !== offer.id"
+      (click)="openApplicationForm(offer.id)"
+      class="mt-3 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded">
+      Postuler
+    </button>
+
+    <!-- ✏️ Formulaire candidature -->
+    <div *ngIf="selectedOfferId === offer.id" class="mt-4 bg-gray-50 p-4 rounded border">
+      <form [formGroup]="applicationForm" (ngSubmit)="postuler()">
+        <div class="mb-2">
+          <label class="block text-sm font-medium">Nom complet :</label>
+          <input type="text" formControlName="fullName" class="border p-2 w-full rounded" />
+        </div>
+        <div class="mb-2">
+          <label class="block text-sm font-medium">Email :</label>
+          <input type="email" formControlName="email" class="border p-2 w-full rounded" />
+        </div>
+        <div class="mb-2">
+          <label class="block text-sm font-medium">CV (URL) :</label>
+          <input type="text" formControlName="cvUrl" class="border p-2 w-full rounded" />
+        </div>
+        <button type="submit" class="mt-2 px-4 py-1 bg-green-600 hover:bg-green-700 text-white rounded">
+          {{ editingEmail ? '✏️ Modifier' : '📨 Envoyer' }}
+        </button>
+      </form>
+    </div>
+
+    <!-- 📄 Liste des candidatures -->
+    <div *ngIf="offer.applications?.length > 0" class="mt-4 bg-gray-100 p-4 rounded">
+      <h4 class="font-bold mb-2">
+        {{ isHR ? '📄 Candidatures reçues :' : '📄 Vos Candidatures :' }}
+      </h4>
+      <ul class="list-disc pl-5 text-sm space-y-1">
+        <li *ngFor="let app of offer.applications">
+          👤 {{ app.fullName }} | ✉️ {{ app.email }} |
+          📎 <a [href]="app.cvUrl" target="_blank" class="text-blue-600 underline">Voir le CV</a>
+
+          <span *ngIf="!isHR" class="ml-4">
+            <button
+              (click)="openApplicationForm(offer.id, app.email)"
+              class="text-yellow-600 hover:underline text-sm ml-2">✏️ Modifier</button>
+            <button
+              (click)="supprimerCandidature(offer.id, app.email)"
+              class="text-red-600 hover:underline text-sm ml-2">🗑️ Supprimer</button>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

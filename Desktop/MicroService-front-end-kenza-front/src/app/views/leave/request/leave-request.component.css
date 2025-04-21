@@ -1,0 +1,244 @@
+/* Main container styles */
+.leave-form-container {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* Page title */
+  .page-title {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+  }
+  
+  /* Form card styling */
+  .form-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form group styling */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Form label styling */
+  .form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+  }
+  
+  /* Form input styling */
+  .form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .form-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+  }
+  
+  /* Error message styling */
+  .error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Form actions section */
+  .form-actions {
+    margin-top: 30px;
+  }
+  
+  /* Submit button styling */
+  .submit-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+  }
+  
+  .submit-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .submit-btn:active {
+    transform: translateY(1px);
+  }
+  
+  .submit-btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+  }
+  
+  /* Response message styling */
+  .response-message {
+    padding: 12px 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    background-color: #d4edda;
+    color: #155724;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .leave-form-container {
+      padding: 15px;
+    }
+    
+    .form-card {
+      padding: 20px 15px;
+    }
+  }
+  
+  /* Date input specific styling for better cross-browser appearance */
+  input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 10px;
+  }
+  
+  /* For better mobile experience */
+  @media (max-width: 480px) {
+    .form-input, .submit-btn {
+      font-size: 14px;
+      padding: 10px;
+    }
+    
+    .page-title {
+      font-size: 20px;
+    }
+  }
+
+  /* Success message (green) */
+.response-message {
+    padding: 12px 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    background-color: #d4edda;  /* light green */
+    color: #155724;             /* dark green */
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  /* Error message (red) */
+  .error-response-message {
+    padding: 12px 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    background-color: #f8d7da;  /* light red */
+    color: #721c24;             /* dark red */
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  /* Additional styles you already have */
+  .leave-form-container {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .page-title {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+  }
+  
+  .form-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .form-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+  }
+  
+  .error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .form-actions {
+    margin-top: 30px;
+  }
+  
+  .submit-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+  }
+  
+  .submit-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .submit-btn:active {
+    transform: translateY(1px);
+  }
+  
+  .submit-btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+  }

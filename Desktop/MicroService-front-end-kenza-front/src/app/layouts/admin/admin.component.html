@@ -1,0 +1,22 @@
+<!-- Layout principal admin -->
+<app-sidebar></app-sidebar>
+
+<div class="relative md:ml-64 bg-blueGray-100">
+  <app-admin-navbar></app-admin-navbar>
+
+  <div class="relative" [ngClass]="{ 'bg-red-600': isDashboardRoute(), 'bg-white': !isDashboardRoute() }">
+    
+    <!-- ✅ Afficher le dashboard uniquement s’il est demandé -->
+    <ng-container *ngIf="isDashboardRoute()">
+      <router-outlet></router-outlet>
+    </ng-container>
+
+    <!-- ✅ Autres pages -->
+    <ng-container *ngIf="!isDashboardRoute()">
+      <router-outlet></router-outlet>
+    </ng-container>
+
+  </div>
+
+  <app-footer-admin></app-footer-admin>
+</div>

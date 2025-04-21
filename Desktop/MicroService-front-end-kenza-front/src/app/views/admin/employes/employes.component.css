@@ -1,0 +1,185 @@
+/* La modale de base */
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Assurez-vous que c'est au-dessus de tout autre contenu */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .bg-opacity-40 {
+    background-color: rgba(0, 0, 0, 0.6); /* Opacité plus forte pour l'effet de superposition */
+  }
+  
+  /* Modale */
+  .modal {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    max-width: 500px; /* Limiter la largeur de la modale */
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre douce pour l'effet 3D */
+    background-color: #ffffff;
+  }
+  
+  /* Modale visible */
+  .modal.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  /* Amélioration des éléments de formulaire */
+  input {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 12px;
+    width: 100%;
+    transition: border 0.3s ease-in-out;
+  }
+  
+  input:focus {
+    border-color: #4f81e6; /* Changement de couleur sur focus */
+    box-shadow: 0 0 5px rgba(79, 129, 230, 0.7); /* Ombre sur focus pour un effet de surbrillance */
+  }
+  
+  /* Amélioration des boutons */
+  button {
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    transform: scale(1.05); /* Effet de zoom lors du survol */
+  }
+  
+  .bg-blue-600 {
+    background-color: #4f81e6;
+    color: white;
+  }
+  
+  .bg-blue-600:hover {
+    background-color: #3578cc;
+  }
+  
+  .bg-gray-500 {
+    background-color: #6b6b6b;
+    color: white;
+  }
+  
+  .bg-gray-500:hover {
+    background-color: #525252;
+  }
+  
+  .bg-red-500 {
+    background-color: #e53e3e;
+  }
+  
+  .bg-red-500:hover {
+    background-color: #c53030;
+  }
+  
+  /* Style pour le bouton avec icône */
+  .button-historique {
+    border-radius: 9999px; /* rond complet */
+    background-color: #48bb78; /* bg-green-500 */
+    color: white;
+    width: 3rem; /* w-12 */
+    height: 3rem; /* h-12 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease; /* Transition pour l'effet hover */
+  }
+  
+  /* Effet hover */
+  .button-historique:hover {
+    background-color: #38a169; /* hover:bg-green-600 */
+  }
+  
+  /* Pour l'icône à l'intérieur du bouton */
+  .button-historique i {
+    font-size: 1.25rem; /* Taille d'icône équivalente à text-lg */
+  }
+  /* Style commun pour les boutons */
+  .button-commun {
+    border-radius: 9999px; /* Forme ronde */
+    width: 3rem; /* Taille 12 (3rem) */
+    height: 3rem; /* Taille 12 (3rem) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease; /* Transition sur le hover */
+  }
+  
+  /* Style spécifique pour le bouton PDF */
+  .button-pdf {
+    background-color: #e53e3e; /* bg-red-500 */
+    color: white;
+  }
+  
+  .button-pdf:hover {
+    background-color: #c53030; /* hover:bg-red-600 */
+  }
+  
+  /* Style spécifique pour le bouton Historique */
+  .button-historique {
+    background-color: #48bb78; /* bg-green-500 */
+    color: white;
+  }
+  
+  .button-historique:hover {
+    background-color: #38a169; /* hover:bg-green-600 */
+  }
+  
+  /* Style pour l'icône à l'intérieur du bouton */
+  .button-commun i {
+    font-size: 1.25rem; /* Taille d'icône text-lg */
+  }
+  
+  .modal {
+    visibility: visible !important;
+    opacity: 1 !important;
+    background-color: #fff; /* Assurez-vous que la couleur de fond est bien définie */
+  }
+  .modal-backdrop {
+    z-index: 9999;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+  
+  .modal-center {
+    position: relative;
+    top: 20%;
+    margin: auto;
+    background: white;
+  }
+  
+  .btn-fermer {
+    background-color: #4b5563; /* gris moyen */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .btn-fermer:hover {
+    background-color: #374151; /* gris plus foncé au survol */
+  }

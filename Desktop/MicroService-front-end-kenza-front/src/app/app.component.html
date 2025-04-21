@@ -1,0 +1,9 @@
+<router-outlet></router-outlet>
+
+<!-- 🧠 Ajout du bouton de switch de rôle -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+  <button (click)="switchRole()"
+    class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded shadow">
+    🔁 Switch to {{ currentRole === 'HR' ? 'USER' : 'HR' }}
+  </button>
+</div>
