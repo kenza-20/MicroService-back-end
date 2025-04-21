@@ -1,0 +1,174 @@
+version: '3.9'
+
+services:
+  # ✅ Keycloak ajouté ici !
+#  keycloak:
+#    image: quay.io/keycloak/keycloak:24.0.1
+#    container_name: keycloak
+#    command: start-dev
+#    ports:
+#      - "8180:8080"  # ⬅️ ici on mappe 8180 (host) vers 8080 (container)
+#    environment:
+#      KEYCLOAK_ADMIN: admin
+#      KEYCLOAK_ADMIN_PASSWORD: admin
+#    networks:
+#      - backend
+
+  # ✅ Eureka Discovery Server
+  eureka-server:
+    image: eureka-server-image
+    build: ./Eureka-Server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    hostname: eureka
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    networks:
+      - backend
+
+  # ✅ API Gateway
+  api-gateway:
+    image: api-gateway-image
+    build: ./apigateway
+    container_name: api-gateway
+    ports:
+      - "8093:8093"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - conge-service
+      - employe-service
+      - gestion-paie
+      - recrutement-service
+      - eureka-server
+    networks:
+      - backend
+
+  # ✅ Congé Microservice
+    # ✅ Congé Microservice
+  conge-service:
+    image: conge-service-image
+    build: ./conge-service
+    container_name: conge-service
+    environment:
+        - SPRING_DATASOURCE_URL=jdbc:mysql://conge-db:3306/conge-db?createDatabaseIfNotExist=true
+        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=root
+        - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+        - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+        - eureka-server
+        - conge-db
+    networks:
+        - backend
+
+  # ✅ Recrutement Microservice
+  recrutement-service:
+    image: recrutement-service-image
+    build: ./Recrutement
+    container_name: recrutement-service
+    ports: # 🔥 À AJOUTER ICI
+      - "8081:8081"                   # 🔥
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://job_offers_db:3306/job_offers_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.cj.jdbc.Driver
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+      - job_offers_db
+    networks:
+      - backend
+
+
+  # ✅ Employé Microservice
+  employe-service:
+    image: employe-service-image
+    build: ./Employe-Service
+    container_name: employe-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://order-service:3306/order-service?createDatabaseIfNotExist=true&useSSL=false&max_allowed_packet=15728640
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.cj.jdbc.Driver
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+      - order-service
+    networks:
+      - backend
+
+  # ✅ Gestion Paie Microservice
+  gestion-paie:
+    image: gestion-paie-image
+    build: ./gestionPaie
+    container_name: gestion-paie
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:gestionPaie;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+    networks:
+      - backend
+
+  # ✅ Gestion Notification Microservice
+  gestion-notification:
+    image: gestion-notification-image
+    build: ./GestionNotification
+    container_name: gestion-notification
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:gestionNotification;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+    networks:
+      - backend
+
+  # ✅ Base de données pour Congé Service
+    # ✅ Base de données pour Congé Service
+  conge-db:
+     image: mysql:8.0
+     container_name: conge-db
+     environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=conge-db
+     ports:
+        - "3307:3306"
+     networks:
+        - backend
+
+  # ✅ Base de données pour Recrutement Service
+  job_offers_db:
+    image: mysql:5.7
+    container_name: job_offers_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=job_offers_db
+    ports:
+      - "3308:3306"
+    networks:
+      - backend
+
+  # ✅ Base de données pour Employé Service
+  order-service:
+    image: mysql:5.7
+    container_name: order-service
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=order-service
+    ports:
+      - "3309:3306"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

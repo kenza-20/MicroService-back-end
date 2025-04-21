@@ -1,0 +1,24 @@
+2025-04-05 01:04:41.822774+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NOTIFICATION" not found (this database is empty); SQL statement:
+select n1_0.id,n1_0.message,n1_0.phone_number,n1_0.recipient,n1_0.timestamp from notification n1_0 [42104-232]
+2025-04-05 01:05:08.191276+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NOTIFICATION" not found (this database is empty); SQL statement:
+select n1_0.id,n1_0.message,n1_0.phone_number,n1_0.recipient,n1_0.timestamp from notification n1_0 [42104-232]
+2025-04-05 01:08:34.545437+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NOTIFICATION" not found (this database is empty); SQL statement:
+select count(*) from notification n1_0 [42104-232]
+2025-04-05 01:10:19.867530+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NOTIFICATION" not found (this database is empty); SQL statement:
+select count(*) from notification n1_0 [42104-232]
+2025-04-05 01:11:55.080422+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NOTIFICATION" not found (this database is empty); SQL statement:
+select count(*) from notification n1_0 [42104-232]
+2025-04-05 01:13:15.578574+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NOTIFICATION" not found (this database is empty); SQL statement:
+select count(*) from notification n1_0 [42104-232]
+2025-04-05 01:13:30.600639+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NOTIFICATION" not found (this database is empty); SQL statement:
+select count(*) from notification n1_0 [42104-232]
+2025-04-05 01:18:59.913323+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NOTIFICATION" not found (this database is empty); SQL statement:
+select count(*) from notification n1_0 [42104-232]
