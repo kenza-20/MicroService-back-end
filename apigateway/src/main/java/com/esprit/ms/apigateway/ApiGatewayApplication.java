@@ -16,21 +16,22 @@ public class ApiGatewayApplication {
     }
 
     @Bean
-    public RouteLocator getawayRoutes(RouteLocatorBuilder builder){
+    public RouteLocator getawayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
-                //nom de l'app ds app.propreties
-                .route("employe-service",r->r.path("/api/employes/**") //tous les path sous order
-                        .uri("http://employe-service:8082"))//port order=8082
+                .route("employe-service", r -> r.path("/api/employes/**")
+                        .uri("http://employe-service:8082"))
 
+                .route("conge-service", r -> r.path("/api/conge/**")
+                        .uri("http://conge-service:8085"))
 
-                .route("conge-service",r->r.path("/api/conge/**") //tous les path sous order
-                        .uri("http://conge-service:8085"))//port order=8085
+                .route("GestionPaie", r -> r.path("/api/paie/**")
+                        .uri("http://gestion-paie:8083"))
 
-                        .route("GestionPaie",r->r.path("/api/paie/**") //tous les path sous order
-                        .uri("http://gestion-paie:8083"))//port order=8083
+                .route("GestionNotification", r -> r.path("/api/notification/**")
+                        .uri("http://gestion-notification:8086"))
 
-                        .route("GestionNotification",r->r.path("/api/notification/**") //tous les path sous order
-                        .uri("http://gestion-notification:8086"))//port order=8086
+                .route("auth-service", r -> r.path("/api/auth/**")
+                        .uri("http://auth-app:3000")) // <-- ici tu utilises auth-app !
 
                 .build();
     }

@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c543397-9a88-49cc-a389-c8137b6d2400" name="Changes" comment="" />
+    <list default="true" id="9c543397-9a88-49cc-a389-c8137b6d2400" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/auth-service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/src/main/java/com/esprit/ms/apigateway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/apigateway/src/main/java/com/esprit/ms/apigateway/ApiGatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,6 +95,8 @@
       <workItem from="1745162130616" duration="118000" />
       <workItem from="1745163080097" duration="107000" />
       <workItem from="1745166644124" duration="122000" />
+      <workItem from="1745168258058" duration="114000" />
+      <workItem from="1745185405609" duration="7083000" />
     </task>
     <servers />
   </component>
